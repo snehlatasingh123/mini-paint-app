@@ -22,6 +22,19 @@
      <mat-icon>edit</mat-icon>
    </button>
     <!-- <label for="pencilSize">Pencil Size</label> -->
+     <!-- Color Picker -->
+    <div
+    class="color-picker-box"
+    [ngClass]="{ selected: selectedTool === 'colorPicker' }"
+  >
+    <mat-icon>brush</mat-icon>
+    <input
+      type="color"
+      id="colorPicker"
+      [(ngModel)]="selectedColor"
+      (change)="setColor()"
+    />
+  </div>
 
     <!-- Eraser Tool Button -->
     <button
@@ -68,19 +81,7 @@
       </button>
     </div>
 
-    <!-- Color Picker -->
-    <div
-      class="color-picker-box"
-      [ngClass]="{ selected: selectedTool === 'colorPicker' }"
-    >
-      <mat-icon>brush</mat-icon>
-      <input
-        type="color"
-        id="colorPicker"
-        [(ngModel)]="selectedColor"
-        (change)="setColor()"
-      />
-    </div>
+    
 
     <!-- Reset Button -->
     <button
@@ -92,13 +93,15 @@
     </button>
 
     <!-- Save Button -->
+    <!-- Save Button -->
     <button
-      (click)="setTool('save')"
-      [ngClass]="{ selected: selectedTool === 'save' }"
-      title="Save"
+    (click)="saveCanvas()"
+    [ngClass]="{ selected: selectedTool === 'save' }"
+    title="Save"
     >
-      <mat-icon>download_for_offline</mat-icon>
+    <mat-icon>download_for_offline</mat-icon>
     </button>
+
   </div>
 
   <!-- Canvas Area -->

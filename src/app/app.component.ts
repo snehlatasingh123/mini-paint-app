@@ -53,9 +53,6 @@ export class AppComponent implements OnInit {
     } else if (tool === 'pencil') {
       this.ctx.strokeStyle = this.selectedColor;
       this.setCursor('pencil');
-    } else if (tool === 'save') {
-      // Set background change for the save tool
-      this.setCursor('default');
     } else {
       this.setCursor('default');
     }
