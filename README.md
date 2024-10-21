@@ -1,3 +1,40 @@
+# Mini Paint Application
+
+A simplified online painting application that allows users to create pixel art in the browser with basic tools such as a pencil, eraser, and color picker. Users can draw on a grid-based canvas and save their work locally.
+
+## Features
+- **Tools**: Pencil for free drawing, eraser with multiple sizes, and color picker.
+- **Save and Reset**: Save the artwork locally or reset the canvas.
+- **Canvas**: A pixel grid-based canvas where each cell represents a pixel.
+- **Responsive Design**: The UI adapts for tablet and mobile screens.
+
+## Technologies Used
+- **Angular**: Framework for the application.
+- **Material Icons**: For the tool icons (pencil, eraser, etc.).
+- **HTML5 Canvas**: For drawing functionality.
+- **CSS**: Custom styles for responsiveness and tool design.
+- **TypeScript**: Ensures type safety and clear structure.
+
+## Setup Instructions
+1. Clone the repository.
+2. Install dependencies with `npm install`.
+3. Run the application with `ng serve`.
+4. Open `http://localhost:4200` in your browser.
+
+## Best Practices
+- **Component-Based Design**: Separate concerns with clear component structure.
+- **Responsive UI**: Flexible grid layout for different device sizes.
+- **Type Safety**: Use of TypeScript for better maintainability.
+
+## Screenshots
+assets are in assets folder in src
+
+
+
+
+
+
+
 # MiniPaintApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
