@@ -26,8 +26,7 @@ A simplified online painting application that allows users to create pixel art i
 - **Responsive UI**: Flexible grid layout for different device sizes.
 - **Type Safety**: Use of TypeScript for better maintainability.
 
-## Screenshots
-assets are in assets folder in src
+
 
 
 
