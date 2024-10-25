@@ -1,8 +1,6 @@
 <div class="app-container">
   <!-- Toolbar -->
   <div class="toolbar">
-   
-
     <!-- Pencil Size Slider -->
     <input
       type="range"
@@ -13,28 +11,28 @@
       (input)="setPencilSize()"
       class="vertical-slider"
     />
-     <!-- Pencil Tool Button -->
-     <button
-     (click)="setTool('pencil')"
-     [ngClass]="{ selected: selectedTool === 'pencil' }"
-     title="Pencil"
-   >
-     <mat-icon>edit</mat-icon>
-   </button>
-    <!-- <label for="pencilSize">Pencil Size</label> -->
-     <!-- Color Picker -->
+    <!-- Pencil Tool Button -->
+    <button
+      (click)="setTool('pencil')"
+      [ngClass]="{ selected: selectedTool === 'pencil' }"
+      title="Pencil"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    
+    <!-- Color Picker -->
     <div
-    class="color-picker-box"
-    [ngClass]="{ selected: selectedTool === 'colorPicker' }"
-  >
-    <mat-icon>brush</mat-icon>
-    <input
-      type="color"
-      id="colorPicker"
-      [(ngModel)]="selectedColor"
-      (change)="setColor()"
-    />
-  </div>
+      class="color-picker-box"
+      [ngClass]="{ selected: selectedTool === 'colorPicker' }"
+    >
+      <mat-icon>brush</mat-icon>
+      <input
+        type="color"
+        id="colorPicker"
+        [(ngModel)]="selectedColor"
+        (change)="setColor()"
+      />
+    </div>
 
     <!-- Eraser Tool Button -->
     <button
@@ -81,8 +79,6 @@
       </button>
     </div>
 
-    
-
     <!-- Reset Button -->
     <button
       (click)="resetCanvas()"
@@ -93,15 +89,13 @@
     </button>
 
     <!-- Save Button -->
-    <!-- Save Button -->
     <button
-    (click)="saveCanvas()"
-    [ngClass]="{ selected: selectedTool === 'save' }"
-    title="Save"
+      (click)="saveCanvas()"
+      [ngClass]="{ selected: selectedTool === 'save' }"
+      title="Save"
     >
-    <mat-icon>download_for_offline</mat-icon>
+      <mat-icon>download_for_offline</mat-icon>
     </button>
-
   </div>
 
   <!-- Canvas Area -->

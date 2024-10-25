@@ -1,17 +1,19 @@
 .app-container {
   display: flex;
+  flex-direction: row;
   height: 100vh;
 }
 
 .toolbar {
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
-  padding: 10px;
-  gap: 30px;
-  width: 60px;
   align-items: center;
+  /* background-color: #f0f0f0; */
+  padding: 10px;
+  gap: 20px;
+  width: 60px;
   border-right: 1px solid #ccc;
+  margin-top: 2%;
 }
 
 button {
@@ -29,10 +31,8 @@ button.selected {
 .vertical-slider {
   writing-mode: bt-lr;
   transform: rotate(270deg);
-  height: 150px;
-  background-color: black; /* Pencil slider set to black */
-  /* gap: 10px; */
-  margin-bottom: -30px;
+  height: 100px;
+  margin-bottom: 10px;
 }
 
 .eraser-size-options {
@@ -68,6 +68,8 @@ button.eraser-size-btn:hover {
 .drawing-canvas {
   background-color: #fff;
   border: 1px solid #000;
+  width: 100%;
+  height: 100%;
 }
 
 .color-picker-box {
@@ -91,35 +93,66 @@ input[type="color"] {
   cursor: pointer;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  /* For tablets */
-  .toolbar {
-    width: 80px;
+  .app-container {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .drawing-canvas {
-    width: 90%;
-    height: 90%;
-  }
-}
-
-@media (max-width: 480px) {
-  /* For phones */
   .toolbar {
     flex-direction: row;
-    justify-content: space-between;
     width: 100%;
-    padding: 5px;
+    height: 60px;
+    justify-content: space-around;
     border-right: none;
     border-bottom: 1px solid #ccc;
+    margin-top: 2%;
+  }
+
+  .vertical-slider {
+    height: auto;
+    width: 60px;
+    transform: rotate(0deg); /* Adjust rotation for smaller screens */
   }
 
   .canvas-wrapper {
     padding: 10px;
+    width: 100%;
   }
 
   .drawing-canvas {
     width: 100%;
-    height: auto;
+    height: calc(100vh - 70px); /* Adjust for toolbar height */
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .toolbar {
+    width: 100%;
+    height: 60px;
+    justify-content: space-around;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .vertical-slider {
+    width: 40px;
+    transform: rotate(0deg); /* Adjust for mobile */
+  }
+
+  .canvas-wrapper {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .drawing-canvas {
+    width: 98%;
+    margin-left: 2%;
+    height: calc(100vh - 90px); /* Adjust for toolbar height */
   }
 }
