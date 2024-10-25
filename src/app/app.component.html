@@ -100,12 +100,22 @@
 
   <!-- Canvas Area -->
   <div class="canvas-wrapper">
-    <canvas
+    <!-- <canvas
       #canvasRef
       class="drawing-canvas"
       (mousedown)="startDrawing($event)"
       (mousemove)="draw($event)"
       (mouseup)="stopDrawing()"
-    ></canvas>
+    ></canvas> -->
+    <canvas
+   #canvasRef
+   class="drawing-canvas"
+   (mousedown)="startDrawing($event)"
+   (mousemove)="draw($event)"
+   (mouseup)="stopDrawing()"
+   (touchstart)="startDrawing($event)"
+   (touchmove)="draw($event)"
+   (touchend)="stopDrawing()"
+ ></canvas>
   </div>
 </div>

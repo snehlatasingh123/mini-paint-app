@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   canvas!: ElementRef<HTMLCanvasElement>;
   ctx!: CanvasRenderingContext2D;
 
-  // For scaling and translating canvas position
+  // Scaling for different screen sizes
   scaleX: number = 1;
   scaleY: number = 1;
 
@@ -39,18 +39,15 @@ export class AppComponent implements OnInit {
     this.setCanvasSize();
     this.setCursor('pencil'); // Default to pencil cursor
 
-    // Listen for window resize events to ensure the canvas size is correct
     window.addEventListener('resize', this.setCanvasSize.bind(this));
   }
 
   setCanvasSize() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
 
-    // Set canvas width and height
     canvasEl.width = window.innerWidth - 200;
     canvasEl.height = window.innerHeight - 100;
 
-    // Use getBoundingClientRect to calculate the scaling factor
     const rect = canvasEl.getBoundingClientRect();
     this.scaleX = canvasEl.width / rect.width;
     this.scaleY = canvasEl.height / rect.height;
@@ -60,30 +57,27 @@ export class AppComponent implements OnInit {
     this.ctx.strokeStyle = this.selectedColor;
   }
 
-  // Get the correct relative position for drawing
   getRelativePosition(event: MouseEvent | TouchEvent) {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     const rect = canvasEl.getBoundingClientRect();
-
     let x, y;
+
     if (event instanceof MouseEvent) {
-      // Mouse Event
       x = (event.clientX - rect.left) * this.scaleX;
       y = (event.clientY - rect.top) * this.scaleY;
     } else {
-      // Touch Event (for mobile/touch devices)
       const touch = event.touches[0];
       x = (touch.clientX - rect.left) * this.scaleX;
       y = (touch.clientY - rect.top) * this.scaleY;
     }
-    
+
     return { x, y };
   }
 
   setTool(tool: string) {
     this.selectedTool = tool;
     if (tool === 'eraser') {
-      this.ctx.strokeStyle = '#FFFFFF'; // Eraser color
+      this.ctx.strokeStyle = '#FFFFFF';
       this.setCursor('eraser');
     } else if (tool === 'pencil') {
       this.ctx.strokeStyle = this.selectedColor;
@@ -128,6 +122,7 @@ export class AppComponent implements OnInit {
   }
 
   startDrawing(event: MouseEvent | TouchEvent) {
+    event.preventDefault(); // Prevent scrolling on touch
     this.drawing = true;
     const { x, y } = this.getRelativePosition(event);
     this.ctx.beginPath();
@@ -136,6 +131,7 @@ export class AppComponent implements OnInit {
 
   draw(event: MouseEvent | TouchEvent) {
     if (!this.drawing) return;
+    event.preventDefault();
     const { x, y } = this.getRelativePosition(event);
     this.ctx.lineTo(x, y);
     this.ctx.stroke();
@@ -149,7 +145,7 @@ export class AppComponent implements OnInit {
   resetCanvas() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-    this.selectedTool = 'reset'; // Mark reset as selected
+    this.selectedTool = 'reset';
   }
 
   saveCanvas() {
