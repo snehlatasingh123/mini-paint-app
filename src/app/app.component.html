@@ -1,7 +1,9 @@
 <div class="app-container">
   <!-- Toolbar -->
   <div class="toolbar">
-    <!-- Pencil Size Slider -->
+   <div class="pencil-box">
+
+     <!-- Pencil Size Slider -->
     <input
       type="range"
       id="pencilSize"
@@ -33,6 +35,7 @@
         (change)="setColor()"
       />
     </div>
+   </div>
 
     <!-- Eraser Tool Button -->
     <button
@@ -45,6 +48,16 @@
 
     <!-- Eraser Size Options -->
     <div *ngIf="selectedTool === 'eraser'" class="eraser-size-options">
+
+      <button
+        (click)="setEraserSize(5)"
+        [ngClass]="{ 'eraser-selected': eraserSize === 5 }"
+        class="eraser-size-btn"
+      >
+        <mat-icon>crop_7_5</mat-icon>
+        <!-- Small Eraser -->
+      </button>
+
       <button
         (click)="setEraserSize(5)"
         [ngClass]="{ 'eraser-selected': eraserSize === 5 }"

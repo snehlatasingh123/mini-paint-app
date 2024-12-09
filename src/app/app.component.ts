@@ -100,21 +100,56 @@ export class AppComponent implements OnInit {
   setEraserSize(size: number) {
     this.eraserSize = size;
     this.ctx.lineWidth = size;
+    this.setCursor('eraser', size);
   }
 
-  setCursor(tool: string) {
+  // setCursor(tool: string) {
+  //   const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+  //   if (tool === 'pencil') {
+  //     this.renderer.setStyle(
+  //       canvasEl,
+  //       'cursor',
+  //       'url(data:image/svg+xml;base64,<<Base64_encoded_pencil_svg>>), auto'
+  //     );
+  //   } else if (tool === 'eraser') {
+  //     this.renderer.setStyle(
+  //       canvasEl,
+  //       'cursor',
+  //       'url(data:image/svg+xml;base64,<<Base64_encoded_eraser_svg>>), auto'
+  //     );
+  //   } else {
+  //     this.renderer.setStyle(canvasEl, 'cursor', 'default');
+  //   }
+  // }
+
+  setCursor(tool: string, size: number = 10) {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+
     if (tool === 'pencil') {
+      const simplePencilSvg =
+        'data:image/svg+xml;base64,' +
+        btoa(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16">
+      <path d="M1 15l5-1 9-9-4-4-9 9-1 5z" fill="#000"/>
+      <path d="M11 2l3 3" stroke="#fff" stroke-width="1"/>
+    </svg>
+  `);
       this.renderer.setStyle(
         canvasEl,
         'cursor',
-        'url(data:image/svg+xml;base64,<<Base64_encoded_pencil_svg>>), auto'
+        `url(${simplePencilSvg}) 0 15, auto`
       );
     } else if (tool === 'eraser') {
+      const eraserSvg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" fill="none" stroke="black" stroke-width="1">
+          <rect x="0" y="0" width="${size}" height="${size}" fill="gray" stroke="black"/>
+        </svg>
+      `;
+      const encodedEraserSvg = 'data:image/svg+xml;base64,' + btoa(eraserSvg);
       this.renderer.setStyle(
         canvasEl,
         'cursor',
-        'url(data:image/svg+xml;base64,<<Base64_encoded_eraser_svg>>), auto'
+        `url(${encodedEraserSvg}) ${size * 2} ${size * 2}, auto`
       );
     } else {
       this.renderer.setStyle(canvasEl, 'cursor', 'default');

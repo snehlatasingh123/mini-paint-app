@@ -1,3 +1,7 @@
+.drawing-canvas {
+  cursor: none; /* Hide default cursor to ensure only the custom cursor is visible */
+}
+
 .app-container {
   display: flex;
   flex-direction: row;
@@ -12,10 +16,24 @@
   padding: 10px;
   gap: 20px;
   width: 60px;
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #fff ;
   margin-top: 2%;
 }
+.pencil-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  margin-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: auto;
+  width: 60px;
+}
+#pencilSize{
 
+}
 button {
   background-color: gray;
   border: 1px solid black;
@@ -31,7 +49,7 @@ button.selected {
 .vertical-slider {
   writing-mode: bt-lr;
   transform: rotate(270deg);
-  height: 100px;
+  height: 130px;
   margin-bottom: 10px;
 }
 
